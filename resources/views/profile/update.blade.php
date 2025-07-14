@@ -28,7 +28,7 @@
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-success">Simpan</button>
-                <a class="btn btn-default bg-back" href="{{ route($route.'index') }}">Kembali</a>
+                <a class="btn btn-default bg-back" href="{{ route('dashboard') }}">Kembali</a>
             </div>
         </form>
     </div>
