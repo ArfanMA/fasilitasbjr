@@ -27,16 +27,28 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Registrasi tipe 'enum' sebagai StringType untuk Doctrine DBAL
-        if (!Type::hasType('enum')) {
-            Type::addType('enum', \Doctrine\DBAL\Types\StringType::class);
+        // Registrasi tipe enum jika DBAL aktif dan koneksi tersedia
+        try {
+            if (!Type::hasType('enum')) {
+                Type::addType('enum', \Doctrine\DBAL\Types\StringType::class);
+            }
+
+            Schema::getConnection()->getDoctrineSchemaManager()
+                ->getDatabasePlatform()
+                ->registerDoctrineTypeMapping('enum', 'string');
+        } catch (\Exception $e) {
+            \Log::warning('Doctrine type mapping skipped: ' . $e->getMessage());
         }
-        //Schema::getConnection()->getDoctrineSchemaManager()->getDatabasePlatform()->registerDoctrineTypeMapping('enum', 'string');
 
-
-        // Bagikan data ruangan ke semua view (misalnya untuk sidebar)
+        // View composer, tapi aman dari crash kalau DB belum siap
         View::composer('*', function ($view) {
-            $ruangan = Ruangan::all();
+            try {
+                $ruangan = Ruangan::all();
+            } catch (\Exception $e) {
+                \Log::warning('Ruangan::all() gagal di View Composer: ' . $e->getMessage());
+                $ruangan = collect(); // Kosongkan jika gagal ambil data
+            }
+
             $view->with('ruangan', $ruangan);
         });
     }
