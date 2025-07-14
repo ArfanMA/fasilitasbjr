@@ -1,8 +1,5 @@
 {
   "build": {
-    "env": {
-      "COMPOSER_ALLOW_SUPERUSER": "1"
-    },
     "nixpacks": {
       "phases": {
         "install": {
@@ -11,7 +8,9 @@
             "php82Extensions.gd",
             "php82Extensions.zip",
             "php82Extensions.mbstring",
-            "php82Extensions.pdo_mysql"
+            "php82Extensions.pdo_mysql",
+            "php82Extensions.exif",
+            "php82Extensions.fileinfo"
           ]
         }
       }
