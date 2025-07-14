@@ -5,12 +5,13 @@
         "install": {
           "nixpkgs": [
             "php82",
-            "php82Extensions.gd",
-            "php82Extensions.zip",
-            "php82Extensions.mbstring",
+            "php82Packages.composer",
             "php82Extensions.pdo_mysql",
+            "php82Extensions.gd",
+            "php82Extensions.fileinfo",
             "php82Extensions.exif",
-            "php82Extensions.fileinfo"
+            "php82Extensions.mbstring",
+            "php82Extensions.zip"
           ]
         }
       }

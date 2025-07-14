@@ -6,6 +6,11 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "ext-curl": "*",
+        "ext-fileinfo": "*",
+        "ext-mbstring": "*",
+        "ext-pdo": "*",
+        "ext-zip": "*",
         "barryvdh/laravel-dompdf": "^0.9.0",
         "doctrine/dbal": "2.13",
         "fruitcake/laravel-cors": "^2.0",
@@ -15,16 +20,11 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.5",
+        "maatwebsite/excel": "^3.1",
         "milon/barcode": "^8.0",
         "realrashid/sweet-alert": "^3.1",
         "spatie/laravel-permission": "*",
-        "yajra/laravel-datatables-oracle": "~9.0",
-        
-        "ext-mbstring": "*",
-        "ext-pdo": "*",
-        "ext-zip": "*",
-        "ext-fileinfo": "*",
-        "ext-curl": "*"
+        "yajra/laravel-datatables-oracle": "~9.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
