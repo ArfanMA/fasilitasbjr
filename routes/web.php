@@ -39,7 +39,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/dashboard', [DashboardController::class, 'adminDashboard'])->name('admin.dashboard');
 
     // PROFILE ROUTE
-    Route::resource('profile', ProfileController::class);
+   Route::resource('profile', ProfileController::class)->only(['edit', 'update'])->names([
+    'edit' => 'profile.edit',
+    'update' => 'profile.update',
+]);
+
 
     // MASTER - RUANGAN (Bisa diakses oleh semua user)
     Route::get('ruangan', [RuanganController::class, 'index'])->name('ruangan.index');
