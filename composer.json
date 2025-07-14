@@ -73,5 +73,16 @@
         "sort-packages": true
     },
     "minimum-stability": "stable",
-    "prefer-stable": true
+      "prefer-stable": true,
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "platform": {
+      "php": "8.2",
+      "ext-pdo": "*",
+      "ext-pdo_mysql": "*"
+    }
+  }
 }
+

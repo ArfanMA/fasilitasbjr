@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
         if (!Type::hasType('enum')) {
             Type::addType('enum', \Doctrine\DBAL\Types\StringType::class);
         }
-        Schema::getConnection()->getDoctrineSchemaManager()->getDatabasePlatform()->registerDoctrineTypeMapping('enum', 'string');
+        //Schema::getConnection()->getDoctrineSchemaManager()->getDatabasePlatform()->registerDoctrineTypeMapping('enum', 'string');
 
 
         // Bagikan data ruangan ke semua view (misalnya untuk sidebar)
