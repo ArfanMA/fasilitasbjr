@@ -7,20 +7,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-SISTEM PEMINJAMAN BUKU adalah sebuah sistem aplikasi berbasis website untuk transaksi peminjaman buku
-
-Fitur utama SISTEM PEMINJAMAN
-1. Login
-2. Management buku 
-3. Cetak kode buku untuk di tempel di buku berbentuk barcode
-4. Management pengunjung/peminjam
-5. Transaksi peminjaman, 
-6. Struk peminjaman sebagai bukti transaksi
-7. Menu pengembalian, ketika terlambat mengembalikan pengunjung/peminjam akan terkena hukuman 
-8. Update status pengujung/peminjam yang terkena hukuman
-9. Sebelum buku di kembalikan buku tidak bisa di pinjam
-10. Grafik halaman dashboard yang menampilkan informasi seputar transaksi
-
+SISTEM PEMINJAMAN FASILITAS adalah sebuah sistem aplikasi berbasis website untuk transaksi peminjaman fasilitas desa
 
 
 Cara Untuk Install SISTEM PEMINJAMAN
@@ -36,9 +23,6 @@ Cara Untuk Install SISTEM PEMINJAMAN
 9. masuk ke dashboard
 
 
-Contoh Dashboard
-![image](https://user-images.githubusercontent.com/52590303/145346413-a151a531-137f-4f4e-b044-177465dcf3ab.png)
 
 
-penambah semangat, 
-https://saweria.co/rezaLaravel � 👌
+penambah semangat, follow igku : https://www.instagram.com/arfanmaulanaay/
