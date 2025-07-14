@@ -19,7 +19,13 @@
         "milon/barcode": "^8.0",
         "realrashid/sweet-alert": "^3.1",
         "spatie/laravel-permission": "*",
-        "yajra/laravel-datatables-oracle": "~9.0"
+        "yajra/laravel-datatables-oracle": "~9.0",
+        
+        "ext-mbstring": "*",
+        "ext-pdo": "*",
+        "ext-zip": "*",
+        "ext-fileinfo": "*",
+        "ext-curl": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
@@ -68,6 +74,6 @@
         "preferred-install": "dist",
         "sort-packages": true
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true
 }
