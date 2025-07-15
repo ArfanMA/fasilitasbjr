@@ -1,16 +1,29 @@
-FROM webdevops/php-nginx:8.2
+FROM php:8.2-fpm
 
-# Install ekstensi PHP yang dibutuhkan Laravel
-RUN docker-php-ext-install pdo pdo_mysql
+# Install dependencies
+RUN apt-get update && apt-get install -y \
+    nginx \
+    libpng-dev \
+    libjpeg-dev \
+    libonig-dev \
+    libxml2-dev \
+    zip unzip curl git \
+    && docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd
+
+# Install Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# Copy project files
+COPY . /var/www
 
 # Set working directory
-WORKDIR /app
+WORKDIR /var/www
 
-# Salin semua file project ke dalam container
-COPY . .
+# Set permissions
+RUN chmod -R 755 /var/www
 
-# Set permission biar folder bisa diakses server
-RUN chmod -R 755 /app
+# Copy nginx config
+COPY nginx/default.conf /etc/nginx/conf.d/default.conf
 
-# Jalankan Laravel dari folder public/
-CMD ["supervisord"]
+# Start php-fpm and nginx
+CMD service nginx start && php-fpm
