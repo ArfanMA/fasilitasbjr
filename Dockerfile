@@ -1,3 +1,4 @@
 FROM webdevops/php-nginx:8.2
 
-RUN install-php-extensions pdo_mysql
+RUN docker-php-ext-install pdo pdo_mysql
+
