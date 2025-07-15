@@ -1,21 +1,7 @@
-FROM webdevops/php-nginx:8.2
+FROM ghcr.io/railwayapp/php
 
-# Set working directory
-WORKDIR /var/www
+RUN install-php-extensions pdo_mysql
 
-# Copy project files
-COPY . /var/www
-
-# Install PHP extensions
-RUN docker-php-ext-install pdo pdo_mysql
-
-# Install Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-# Set permissions
-RUN chmod -R 755 /var/www
-
-# Expose port 80
-EXPOSE 80
-COPY nginx/default.conf /opt/docker/etc/nginx/vhost.common.d/default.conf
-
+# Izin untuk folder yang dibutuhkan Laravel
+RUN mkdir -p storage/framework/{sessions,views,cache} storage/logs bootstrap/cache \
+    && chmod -R a+rw storage bootstrap/cache
