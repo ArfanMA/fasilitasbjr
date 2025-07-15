@@ -1,29 +1,19 @@
-FROM php:8.2-fpm
+FROM webdevops/php-nginx:8.2
 
-# Install dependencies
-RUN apt-get update && apt-get install -y \
-    nginx \
-    libpng-dev \
-    libjpeg-dev \
-    libonig-dev \
-    libxml2-dev \
-    zip unzip curl git \
-    && docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd
-
-# Install Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+# Set working directory
+WORKDIR /var/www
 
 # Copy project files
 COPY . /var/www
 
-# Set working directory
-WORKDIR /var/www
+# Install Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Install PHP extensions
+RUN docker-php-ext-install pdo pdo_mysql
 
 # Set permissions
 RUN chmod -R 755 /var/www
 
 # Copy nginx config
-COPY nginx/default.conf /etc/nginx/conf.d/default.conf
-
-# Start php-fpm and nginx
-CMD service nginx start && php-fpm
+COPY nginx/default.conf /opt/docker/etc/nginx/vhost.common.d/default.conf
