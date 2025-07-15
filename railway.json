@@ -7,15 +7,14 @@
             "php82",
             "php82Packages.composer",
             "php82Extensions.pdo_mysql",
-            "php82Extensions.gd",
+            "php82Extensions.mbstring",
             "php82Extensions.fileinfo",
             "php82Extensions.exif",
-            "php82Extensions.mbstring",
+            "php82Extensions.gd",
             "php82Extensions.zip"
           ]
         }
       }
     }
-  },
-  "start": "php artisan serve --host=0.0.0.0 --port=8080"
+  }
 }
