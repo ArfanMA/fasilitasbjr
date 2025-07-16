@@ -18,6 +18,6 @@
     }
   },
   "deploy": {
-    "startCommand": "php artisan migrate --force && frankenphp"
+    "startCommand": "php artisan migrate --force && caddy run --config /app/Caddyfile --adapter caddyfile"
   }
 }
