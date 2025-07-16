@@ -22,87 +22,67 @@
     <link href="{{ asset('vendor/select2-develop/dist/css/select2.min.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/select2-bootstrap4-theme-master/dist/select2-bootstrap4.min.css') }}" rel="stylesheet">
 
+    <!-- ✅ Tambahkan app.css hasil Laravel Mix -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
     <style>
-        /* Membuat card dengan background semi-transparan */
         .card {
             background: rgba(255, 255, 255, 0.9) !important;
         }
-        /* Background halaman menggunakan gambar dan overlay semi-transparan */
         body {
             background: url("{{ asset('img/background.jpg') }}") no-repeat center center fixed;
             background-size: cover;
         }
-        /* Membuat area konten utama dengan overlay putih semi-transparan */
         #content-wrapper, .container-fluid {
             background: rgba(255, 255, 255, 0.85);
         }
     </style>
 </head>
 <body id="page-top">
-    <!-- Page Wrapper -->
     <div id="wrapper">
-        <!-- Sidebar -->
         @include('layouts.sidebare')
         @include('sweetalert::alert')
-        <!-- End of Sidebar -->
 
-        <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-            <!-- Main Content -->
             <div id="content">
-                <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-0 static-top shadow">
-                    <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    <!-- Topbar Search -->
                     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
                             <h4>{{ now()->format('l, j F Y') }}</h4>
                         </div>
                     </form>
 
-                    <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        <!-- User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
                                 <img class="img-profile rounded-circle" src="{{ asset('img/undraw_profile.svg') }}">
                             </a>
-                            <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 @include('layouts.header')
                             </div>
                         </li>
                     </ul>
                 </nav>
-                <!-- End of Topbar -->
 
-                <!-- Begin Page Content -->
                 <div class="container-fluid">
                     @yield('content')
                 </div>
-                <!-- End of Page Content -->
             </div>
-            <!-- End of Main Content -->
 
-            <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto text-center">
                     <span>Copyright &copy; ArfanMaulana</span>
                 </div>
             </footer>
-            <!-- End of Footer -->
         </div>
-        <!-- End of Content Wrapper -->
     </div>
-    <!-- End of Page Wrapper -->
 
-    <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
@@ -118,5 +98,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <!-- ✅ Tambahkan app.js hasil Laravel Mix -->
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
