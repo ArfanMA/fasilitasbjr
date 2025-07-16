@@ -18,6 +18,6 @@
     }
   },
   "deploy": {
-    "startCommand": "php artisan migrate --force && caddy run --config /app/Caddyfile --adapter caddyfile"
+    "startCommand": "php artisan migrate --force && php -S 0.0.0.0:$PORT -t public"
   }
 }
