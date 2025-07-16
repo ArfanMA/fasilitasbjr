@@ -12,6 +12,7 @@
 
     <!-- Custom styles -->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
 
     <style>
         /* Styling untuk halaman */
