@@ -11,14 +11,13 @@
             "php82Extensions.fileinfo",
             "php82Extensions.exif",
             "php82Extensions.mbstring",
-            "php82Extensions.zip",
-            "nginx"
+            "php82Extensions.zip"
           ]
         }
       }
     }
   },
   "deploy": {
-    "startCommand": "php artisan migrate --force && php-fpm82 -F"
+    "startCommand": "php artisan migrate --force && php -S 0.0.0.0:$PORT -t public"
   }
 }
