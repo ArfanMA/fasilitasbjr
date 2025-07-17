@@ -29,7 +29,7 @@
 
     {{-- Tabel Daftar Peminjaman --}}
     <div class="table-responsive">
-        <table class="table table-hover text-center align-middle">
+        <table class="table table-bordered table-hover text-center align-middle">
             <thead class="table-dark">
                 <tr>
                     <th>NO</th>
