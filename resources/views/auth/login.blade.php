@@ -39,7 +39,7 @@
         }
     </style>
 </head>
-<body class="bg-gradient-primary d-flex align-items-center justify-content-center vh-100">
+<body class="d-flex align-items-center justify-content-center vh-100">
 
     <div class="container">
         <div class="row justify-content-center">
