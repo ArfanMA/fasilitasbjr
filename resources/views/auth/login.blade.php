@@ -12,7 +12,7 @@
 
     <!-- Custom styles -->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
 
     <style>
@@ -120,7 +120,8 @@
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- Tambahkan JavaScript jika perlu -->
-<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ mix('js/app.js') }}"></script>
+
 
 </body>
 </html>
