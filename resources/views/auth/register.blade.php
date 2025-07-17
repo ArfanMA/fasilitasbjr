@@ -25,7 +25,7 @@
 
 <body class="bg-gradient-primary d-flex align-items-center justify-content-center vh-100">
 
-    <div class="container w-50">
+    <div class="container" style="max-width: 500px;">
         <div class="card o-hidden border-0 shadow-lg">
             <div class="card-body p-0">
                 @include('sweetalert::alert')

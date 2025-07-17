@@ -65,7 +65,7 @@
                     </div>
 
                     <!-- Form Login -->
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 col-12">
                         <div class="login-form">
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Silahkan Login</h1>
