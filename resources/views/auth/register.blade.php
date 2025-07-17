@@ -1,84 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
 
-    <!-- Custom fonts for this template -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
+    {{-- Tailwind CDN --}}
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
+<body class="bg-blue-50 flex items-center justify-center min-h-screen">
 
-<body class="bg-gradient-primary d-flex align-items-center justify-content-center vh-100">
-
-    <div class="container w-50">
-        <div class="card o-hidden border-0 shadow-lg">
-            <div class="card-body p-0">
-                @include('sweetalert::alert')
-                <div class="row justify-content-center">
-                    <div class="col-lg-10">
-                        <div class="p-5">
-                            <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Creat<!-- DEBUG: REGISTER VIEW DIBACA -->
-unt!</h1>
-                            </div>
-
-                            @if($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
-
-                            <form method="POST" action="{{ route('register_action') }}">
-                                @csrf
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-user"
-                                        placeholder="Name" name="name" value="{{ old('name') }}">
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control form-control-user"
-                                        placeholder="Email Address" name="email" value="{{ old('email') }}">
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
-                                            placeholder="Password" name="password">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
-                                            placeholder="Repeat Password" name="password_confirmation">
-                                    </div>
-                                </div>
-                                <button type="submit" class="btn btn-primary btn-user btn-block">
-                                    Register Account
-                                </button>
-                            </form>
-
-                            <hr>
-                            <div class="text-center">
-                                <a class="small" href="{{ route('login') }}">Already have an account? Login!</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="w-full max-w-md p-8 space-y-6 bg-white rounded shadow">
+        <div class="text-center">
+            <img src="{{ asset('img/logo.png') }}" alt="Logo" class="mx-auto h-16">
+            <h2 class="mt-6 text-2xl font-bold text-gray-700">Daftar Akun</h2>
+            <p class="mt-2 text-sm text-gray-500">Silakan isi form di bawah ini</p>
         </div>
+
+        <form method="POST" action="{{ route('register') }}" class="space-y-4">
+            @csrf
+
+            {{-- Name --}}
+            <div>
+                <label for="name" class="block text-sm font-medium text-gray-700">Nama</label>
+                <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus
+                    class="w-full px-3 py-2 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 @error('name') border-red-500 @enderror">
+                @error('name')
+                    <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
+                @enderror
+            </div>
+
+            {{-- Email --}}
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                <input id="email" type="email" name="email" value="{{ old('email') }}" required
+                    class="w-full px-3 py-2 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 @error('email') border-red-500 @enderror">
+                @error('email')
+                    <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
+                @enderror
+            </div>
+
+            {{-- Password --}}
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                <input id="password" type="password" name="password" required
+                    class="w-full px-3 py-2 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 @error('password') border-red-500 @enderror">
+                @error('password')
+                    <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
+                @enderror
+            </div>
+
+            {{-- Password Confirm --}}
+            <div>
+                <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Konfirmasi Password</label>
+                <input id="password_confirmation" type="password" name="password_confirmation" required
+                    class="w-full px-3 py-2 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+
+            {{-- Submit --}}
+            <div>
+                <button type="submit"
+                    class="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded shadow">
+                    Daftar
+                </button>
+            </div>
+        </form>
+
+        <p class="text-center text-sm text-gray-500">
+            Sudah punya akun?
+            <a href="{{ route('login') }}" class="text-blue-600 hover:underline">Login di sini</a>
+        </p>
     </div>
-
 </body>
-
 </html>
