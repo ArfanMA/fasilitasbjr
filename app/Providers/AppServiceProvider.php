@@ -7,27 +7,22 @@ use Illuminate\Support\Facades\View;
 use App\Models\Ruangan;
 use Doctrine\DBAL\Types\Type;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\URL; // ← tambahkan ini
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
     public function register()
     {
         //
     }
 
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
     public function boot()
     {
-        // Registrasi tipe enum jika DBAL aktif dan koneksi tersedia
+        // Tambahkan baris ini untuk menghindari mixed content
+        if (env('APP_ENV') === 'production') {
+            URL::forceScheme('https');
+        }
+
         try {
             if (!Type::hasType('enum')) {
                 Type::addType('enum', \Doctrine\DBAL\Types\StringType::class);
@@ -40,13 +35,12 @@ class AppServiceProvider extends ServiceProvider
             \Log::warning('Doctrine type mapping skipped: ' . $e->getMessage());
         }
 
-        // View composer, tapi aman dari crash kalau DB belum siap
         View::composer('*', function ($view) {
             try {
                 $ruangan = Ruangan::all();
             } catch (\Exception $e) {
                 \Log::warning('Ruangan::all() gagal di View Composer: ' . $e->getMessage());
-                $ruangan = collect(); // Kosongkan jika gagal ambil data
+                $ruangan = collect();
             }
 
             $view->with('ruangan', $ruangan);
